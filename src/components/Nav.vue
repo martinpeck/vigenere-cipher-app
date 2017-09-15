@@ -6,7 +6,7 @@
     </button>
 
     <a class="navbar-brand" href="#">
-      V
+      <img id="logo" src="../assets/logo.png" />
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,4 +30,12 @@ export default {
   name: 'navigation'
 }
 </script>
+
+<style>
+  #logo {
+    width: 50px;
+    height: 50px;
+  }
+</style>
+
 
