@@ -25,33 +25,50 @@
         </ul>
       </div>
 
-      <form class="card-body">
+      <div class="card-body">
         <div class="form-group">
           <label for="secretKey">Your secret key</label>
-          <input type="text" class="form-control" id="secretKey" placeholder="Enter your secret key here">
+          <input v-model="secret_key" type="text" class="form-control" id="secretKey" placeholder="Enter your secret key here">
         </div>
 
         <div class="form-group">
           <label for="plainText">Your plain text</label>
-          <textarea class="form-control" id="plainText" rows="4"></textarea>
+          <textarea v-model="plain_text" class="form-control" id="plainText" rows="4"></textarea>
         </div>
 
         <div class="form-group">
           <label for="cipherText">Your cipher text</label>
-          <textarea class="form-control" id="cipherText" rows="4" readonly></textarea>
+          <textarea v-model="computed_cipher_text" class="form-control" id="cipherText" rows="4" readonly></textarea>
         </div>
-
-      </form>
-
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import {encode} from '@/model/Vignere'
+
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      plain_text: '',
+      cipher_text: '',
+      secret_key: ''
+    }
+  },
+  methods: {
+    doStuff () {
+      alert('hello')
+    }
+  },
+  computed: {
+    computed_cipher_text () {
+      if (this.secret_key) {
+        return encode(this.plain_text, this.secret_key)
+      } else {
+        return 'You need to provide a secret key'
+      }
     }
   }
 }
