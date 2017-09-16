@@ -17,10 +17,10 @@
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Encode Plain Text</a>
+            <a class="nav-link" v-bind:class="{ active: encodeMode}" @click.prevent="showEncode" href="#">Encode Plain Text</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Decode Cipher Text</a>
+            <a class="nav-link" v-bind:class="{ active: decodeMode}" @click.prevent="showDecode" href="#">Decode Cipher Text</a>
           </li>
         </ul>
       </div>
@@ -31,15 +31,30 @@
           <input v-model="secret_key" type="text" class="form-control" id="secretKey" placeholder="Enter your secret key here">
         </div>
 
-        <div class="form-group">
-          <label for="plainText">Your plain text</label>
-          <textarea v-model="plain_text" class="form-control" id="plainText" rows="4"></textarea>
+        <div v-if="mode==='encode'">
+          <div class="form-group">
+            <label for="plainText">Your plain text</label>
+            <textarea v-model="plain_text_to_encode" class="form-control" id="plainText" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="cipherText">Your cipher text</label>
+            <textarea v-model="computed_cipher_text" class="form-control" id="cipherText" rows="4" readonly></textarea>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="cipherText">Your cipher text</label>
-          <textarea v-model="computed_cipher_text" class="form-control" id="cipherText" rows="4" readonly></textarea>
+        <div v-if="mode==='decode'">
+          <div class="form-group">
+            <label for="plainText">Your cipher text</label>
+            <textarea v-model="cipher_text_to_decode" class="form-control" id="plainText" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="cipherText">Your plain text</label>
+            <textarea v-model="computed_plain_text" class="form-control" id="cipherText" rows="4" readonly></textarea>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -47,28 +62,47 @@
 
 <script>
 
-import {encode} from '@/model/Vignere'
+import {encode, decode} from '@/model/Vignere'
 
 export default {
-  data () {
+  data: function () {
     return {
-      plain_text: '',
-      cipher_text: '',
-      secret_key: ''
+      plain_text_to_encode: '',
+      cipher_text_to_decode: '',
+      secret_key: '',
+      mode: 'encode'
     }
   },
   methods: {
-    doStuff () {
-      alert('hello')
+    showEncode: function () {
+      console.log('encoding')
+      this.mode = 'encode'
+    },
+    showDecode: function () {
+      console.log('decoding')
+      this.mode = 'decode'
     }
   },
   computed: {
-    computed_cipher_text () {
+    computed_cipher_text: function () {
       if (this.secret_key) {
-        return encode(this.plain_text, this.secret_key)
+        return encode(this.plain_text_to_encode, this.secret_key)
       } else {
         return 'You need to provide a secret key'
       }
+    },
+    computed_plain_text: function () {
+      if (this.secret_key) {
+        return decode(this.cipher_text_to_decode, this.secret_key)
+      } else {
+        return 'You need to provide a secret key'
+      }
+    },
+    encodeMode: function () {
+      return this.mode === 'encode'
+    },
+    decodeMode: function () {
+      return this.mode === 'decode'
     }
   }
 }
