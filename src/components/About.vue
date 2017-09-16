@@ -2,13 +2,43 @@
   <div id="about" class="container">
     <h2>About the Vigenere Cipher</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus consectetur felis, id faucibus lectus viverra eu. In auctor elit velit. Phasellus efficitur condimentum aliquet. Sed eget felis at metus dignissim tincidunt a a odio. Phasellus et metus nec quam interdum malesuada vel sed metus. Nulla sed velit at orci vestibulum vestibulum ut convallis ex. Maecenas eu dolor imperdiet, vehicula ipsum ac, eleifend urna. Sed eget imperdiet sem.
+      The Vigenère cipher is a way to encrypt alphabetic text. It uses series of Caesar ciphers, picked based up the letters of a secret keyword.
     </p>
     <p>
-      Nam sed elementum ligula. Donec cursus nulla eget elit vehicula, at vestibulum massa condimentum. Mauris varius id lectus vitae varius. Phasellus varius dui non blandit euismod. Mauris non magna nulla. Curabitur tristique est mattis urna condimentum lobortis. Donec luctus neque vitae leo lobortis, ac elementum augue dignissim. Sed faucibus maximus justo, id lobortis mi. Curabitur hendrerit nisi massa, quis consectetur felis feugiat at. Suspendisse leo ante, rhoncus ut sem a, vestibulum bibendum magna. Nullam vulputate purus eu finibus blandit. Proin tempus ex diam, vitae porttitor nulla facilisis non. Integer non velit at nisi scelerisque auctor ac et lacus.
+      A regular Caesar cipher shifts the alphabet so that each letter in your plain text is substituted with a letter from a shifted alphabet.
+      Using the secret keyword, the Vigenere cipher strings together one Ceaser cipher for each letter in the secret key, and uses each of these
+      Ceaser ciphers, in turn, to encode each character of your plain text.
     </p>
     <p>
-      Quisque auctor ultrices nunc. Nam ornare placerat orci, a pulvinar enim porttitor vel. Etiam sit amet semper quam. Aliquam mollis iaculis suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer auctor mollis nibh vestibulum egestas. Phasellus suscipit facilisis nibh, a placerat dui congue sed. Phasellus pulvinar velit id orci vehicula hendrerit. Suspendisse quis mi a massa dignissim dictum. Aliquam fermentum odio et turpis elementum tincidunt. Fusce egestas mauris eget mattis interdum.
+      You can read about the <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher#Description">Vigenere Cipher in detail on Wikipedia</a>.
     </p>
+
+    <h2>About this Application</h2>
+    <p>
+      This application was written using Vue.js. If you want to see the source code you can <a href="https://github.com/martinpeck/vigenere-cipher-app">find it on GitHub</a>.
+      If you spot any issues, or have any suggestions, please feel free to create an issue.
+    </p>
+
+    <h2>About the Author</h2>
+    <p>This was written by <a href="http://martinpeck.com">Martin Peck</a>. You can find me here...</p>
+    <ul>
+      <li><a href="https://github.com/martinpeck">GitHub</a></li>
+      <li><a href="http://martinpeck.com">martinpeck.com</a></li>
+    </ul>
+
+    <h2>Vigenere Cipher Implementation Notes</h2>
+    <p>The following are notes related to the implementation of the Vigenere Cipher within this application.</p>
+    <ul>
+      <li>All input text is converted to UPPERCASE before being processed.
+        <li>Output text (encoded cipher text and decoded plain text) is therefore presented in UPPERCASE</li>
+      </li>
+      <li>Encoding and decoding only occurs for characters present in the 26 characters of the English alphabet (i.e. "ABCDEFGHIJKLMNOPQRSTUVWXYZ").
+        Any characters not present within this alphabet are skipped and not encoded or decoded, and therefore appear in the output text.
+        <li>Characters within the secret key that are not within this alphabet are not used (i.e. ignored). A secret key of "I LOVE CHEESE!" is treated as "ILOVECHEESE"</li>
+      </li>
+      <li>Whitespace (spaces, tabs etc) are trimmed from the start and end of input text. i.e. "   PLEASE ENCODE ME  " is treated as "PLEASE ENCODE ME"</li>
+    </ul>
+
+
   </div>
 </template>
