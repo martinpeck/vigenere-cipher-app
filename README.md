@@ -1,6 +1,12 @@
-# Vigenère
+# Vigenère App
 
-> A Vigenère encode/decode app
+> A Vigenère encode/decode app written in Vue.js
+
+This website uses Vue.js to create an experience that allows users to encrypt and decrypt text using the Vigenère cipher.
+
+![screenshot](readme_resources/screen-recording.gif)
+
+An instance of this application is running here: <https://vigenere-app.surge.sh>
 
 ## Build Setup
 
@@ -25,6 +31,7 @@ npm run e2e
 
 # run all tests
 npm test
-```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# deploy to surge.sh
+npm run deploy
+```
