@@ -1,5 +1,9 @@
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+function modulo (n, d) {
+  return ((n % d) + d) % d
+}
+
 function processKey (key) {
   var processedKey = ''
 
@@ -35,9 +39,9 @@ function vignereImpl (text = '', key = '', type = encodeDecodeType.ENCODE) {
       var transformedChar
 
       if (type === encodeDecodeType.ENCODE) {
-        transformedChar = ALPHABET[(locationChar + locationKeyChar) % ALPHABET.length]
+        transformedChar = ALPHABET[modulo((locationChar + locationKeyChar), ALPHABET.length)]
       } else {
-        transformedChar = ALPHABET[(locationChar - locationKeyChar) % ALPHABET.length]
+        transformedChar = ALPHABET[modulo((locationChar - locationKeyChar), ALPHABET.length)]
       }
 
       transformedText += transformedChar
