@@ -1,18 +1,36 @@
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+function processKey (key) {
+  var processedKey = ''
+
+  key = key.trim().toUpperCase()
+
+  for (const char of key) {
+    if (ALPHABET.search(char) !== -1) {
+      processedKey += char
+    }
+  }
+
+  return processedKey
+}
+
 function vignereImpl (text = '', key = '', type = encodeDecodeType.ENCODE) {
   var transformedText = ''
   var keyCounter = 0
 
   text = text.trim().toUpperCase()
-  key = key.trim().toUpperCase()
+  key = processKey(key)
+
+  if (key === '') {
+    return text // the key is empty, so return the input text
+  }
 
   for (const char of text) {
     const locationChar = ALPHABET.search(char)
 
     if (locationChar >= 0) {
       const keyChar = key[keyCounter % key.length]
-      const locationKeyChar = ALPHABET.search(keyChar)
+      var locationKeyChar = ALPHABET.search(keyChar)
 
       var transformedChar
 
