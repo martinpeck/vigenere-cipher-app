@@ -9,8 +9,8 @@
     </ol>
     <p>Once you've supplied your secret key, your encoded text will appear as you type your plain text.</p>
     <p>
-      <em>If you want to know the details of how the Vigenère Cipher works, visit the
-        <a href="#">About</a> page of this site.</em>
+      <em>If you want to know the details of how the Vigenère Cipher works, visit
+        <router-link :to="{ name: 'about'}">the About page</router-link> of this site.</em>
     </p>
 
     <div class="card">

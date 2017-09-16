@@ -9,13 +9,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Cipher',
+      name: 'home',
       component: Cipher
     },
     {
       path: '/about',
-      name: 'About',
+      name: 'about',
       component: About
     }
-  ]
+  ],
+  linkActiveClass: 'active'
 })

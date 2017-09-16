@@ -11,14 +11,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
+
+        <router-link tag="li" :to="{ name: 'home'}" class="nav-link" exact>
+          <a class="nav-link">Home</a>
+        </router-link>
+
+         <router-link tag="li" :to="{ name: 'about'}" class="nav-link">
+          <a class="nav-link">About</a>
+        </router-link>
+
       </ul>
 
     </div>
