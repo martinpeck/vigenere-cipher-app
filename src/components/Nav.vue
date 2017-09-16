@@ -6,7 +6,7 @@
     </button>
 
     <a class="navbar-brand" href="#">
-      <img id="logo" src="../assets/logo.png" />
+      <img id="logo" src="../assets/v-logo.png" />
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
