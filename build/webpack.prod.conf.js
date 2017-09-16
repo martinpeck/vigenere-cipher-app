@@ -96,6 +96,13 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
+    ]),
+    // copy CNAME to root
+    new CopyWebpackPlugin([
+      {
+        from: './CNAME',
+        to: config.build.assetsRoot
+      }
     ])
   ]
 })
