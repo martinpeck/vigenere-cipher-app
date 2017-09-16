@@ -1,7 +1,7 @@
 {
   "name": "vigenere",
   "version": "1.0.0",
-  "description": "A Vigenere encode/decode app",
+  "description": "A Vigenère encode/decode app",
   "author": "Martin Peck <martinjohnpeck@gmail.com>",
   "private": true,
   "scripts": {

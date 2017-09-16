@@ -1,7 +1,7 @@
 <template>
   <div id="cipher" class="container">
 
-    <p class="lead">The Vigenere Cipher uses a series of Ceaser Ciphers to encode each character of your plain text message.</p>
+    <p class="lead">The Vigenère Cipher uses a series of Ceaser Ciphers to encode each character of your plain text message.</p>
     <p>You need the following:</p>
     <ol>
       <li>A key that will be shared with the recipient of your encoded message</li>
@@ -9,7 +9,7 @@
     </ol>
     <p>Once you've supplied your secret key, your encoded text will appear as you type your plain text.</p>
     <p>
-      <em>If you want to know the details of how the Vigenere Cipher works, visit the
+      <em>If you want to know the details of how the Vigenère Cipher works, visit the
         <a href="#">About</a> page of this site.</em>
     </p>
 

@@ -1,6 +1,6 @@
-# vigenere
+# Vigenère
 
-> A Vigenere encode/decode app
+> A Vigenère encode/decode app
 
 ## Build Setup
 
