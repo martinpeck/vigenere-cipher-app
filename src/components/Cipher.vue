@@ -22,6 +22,9 @@
           <li class="nav-item">
             <a class="nav-link" v-bind:class="{ active: decodeMode}" @click.prevent="showDecode" href="#">Decode Cipher Text</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" v-bind:class="{ active: tableMode}" @click.prevent="showTable" href="#">Create Cipher Table</a>
+          </li>
         </ul>
       </div>
 
@@ -55,6 +58,8 @@
           </div>
         </div>
 
+        <cipher-table v-if="mode==='table'" v-bind:cipherKey="secret_key"></cipher-table>
+
       </div>
     </div>
   </div>
@@ -63,8 +68,14 @@
 <script>
 
 import {encode, decode} from '@/model/Vignere'
+import CipherTable from '@/components/CipherTable'
 
 export default {
+
+  components: {
+    'cipher-table': CipherTable
+  },
+
   data: function () {
     return {
       plain_text_to_encode: '',
@@ -73,6 +84,7 @@ export default {
       mode: 'encode'
     }
   },
+
   methods: {
     showEncode: function () {
       console.log('encoding')
@@ -81,8 +93,13 @@ export default {
     showDecode: function () {
       console.log('decoding')
       this.mode = 'decode'
+    },
+    showTable: function () {
+      console.log('table')
+      this.mode = 'table'
     }
   },
+
   computed: {
     computed_cipher_text: function () {
       if (this.secret_key) {
@@ -103,6 +120,9 @@ export default {
     },
     decodeMode: function () {
       return this.mode === 'decode'
+    },
+    tableMode: function () {
+      return this.mode === 'table'
     }
   }
 }

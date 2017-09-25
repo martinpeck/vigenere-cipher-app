@@ -1,21 +1,5 @@
-const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
 function modulo (n, d) {
   return ((n % d) + d) % d
-}
-
-function processKey (key) {
-  var processedKey = ''
-
-  key = key.trim().toUpperCase()
-
-  for (const char of key) {
-    if (ALPHABET.search(char) !== -1) {
-      processedKey += char
-    }
-  }
-
-  return processedKey
 }
 
 function vignereImpl (text = '', key = '', type = encodeDecodeType.ENCODE) {
@@ -23,7 +7,7 @@ function vignereImpl (text = '', key = '', type = encodeDecodeType.ENCODE) {
   var keyCounter = 0
 
   text = text.trim().toUpperCase()
-  key = processKey(key)
+  key = cleanUpSecretKey(key)
 
   if (key === '') {
     return text // the key is empty, so return the input text
@@ -60,10 +44,30 @@ const encodeDecodeType = {
   DECODE: 1
 }
 
+export const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+export function cleanUpSecretKey (key) {
+  var processedKey = ''
+
+  key = key.trim().toUpperCase()
+
+  for (const char of key) {
+    if (ALPHABET.search(char) !== -1) {
+      processedKey += char
+    }
+  }
+
+  return processedKey
+}
+
 export function encode (plaintext, key) {
   return vignereImpl(plaintext, key, encodeDecodeType.ENCODE)
 }
 
 export function decode (ciphertext, key) {
   return vignereImpl(ciphertext, key, encodeDecodeType.DECODE)
+}
+
+export function generateCeaserTable (key) {
+  return vignereImpl(ALPHABET, key, encodeDecodeType.ENCODE)
 }
